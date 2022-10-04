@@ -14,6 +14,8 @@ public class GlobalControllerAdvice {
     @ExceptionHandler(BoardException.class)
     public ResponseEntity<?> applicationHandler(BoardException e) {
         log.info("Error occurs {}", e.toString());
+        log.info("e.getErrorCode().getStatus() {}", e.getErrorCode().getStatus());
+        log.info("e.getErrorCode().name() {}", e.getErrorCode().name());
         return ResponseEntity.status(e.getErrorCode().getStatus())
                 .body(Response.error(e.getErrorCode().name()));
     }

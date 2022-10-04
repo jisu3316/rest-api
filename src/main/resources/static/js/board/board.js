@@ -13,9 +13,10 @@ function createBoard() {
         data: JSON.stringify({"boardTitle" : boardTitle, "boardContent" : boardContent, "boardUserName" : boardUserName, "boardPassword" : boardPassword}),
         contentType: "application/json",
         success: function (data) {
-            location.href = "/view/board/" + data.result.boardId;
-            alert(data.result.boardId);
-            console.log(data);
+            console.log("data: ", data);
+            // location.href = "/view/board/" + data;
+            alert(data);
+            // console.log(data);
         },
         error: function (request, status, error) {
             alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -41,15 +42,17 @@ function updateBoard() {
         data: JSON.stringify({"boardId": boardId, "boardTitle" : boardTitle, "boardContent" : boardContent, "boardUserName" : boardUserName, "boardPassword" : boardPassword}),
         contentType: "application/json",
         success: function (data) {
-            location.href = "/view/board/" + data.result.boardId;
-            alert(data.result.boardId);
-            console.log(data);
+            console.log("data: ", data);
+            // location.href = "/view/board/" + data.result.boardId;
+            // alert(data.result.boardId);
+            // console.log(data);
         },
         error: function (request, status, error) {
-            // alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-            let err = JSON.parse(request.responseText);
-            alert(err.resultCode)
-            console.log("에러: " + err);
+            console.log("request: ", request);
+            console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            // let err = JSON.parse(request.responseText);
+            // alert(err.resultCode)
+            console.log("에러: " , err);
         }
     });
 }
